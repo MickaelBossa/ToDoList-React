@@ -1,9 +1,11 @@
-import './App.css';
+import "./App.css";
+import Form from "./Components/Form";
 
 function App() {
   return (
     <div className="App">
-
+      <h1 className="title">Todo-List</h1>
+      <Form />
     </div>
   );
 }
