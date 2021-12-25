@@ -5,15 +5,7 @@ import Item from '../../Components/Item';
 function App() {
 
 // --------------------STATES----------------------------------
-  const [tasks, setTasks] = useState([
-    {
-      txt: 'Apprendre React',
-
-    },
-    {
-      txt: 'Faire du sport',
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   const inputRef = useRef();
 
@@ -24,12 +16,20 @@ function App() {
     setTasks(newTasks);
   }
 
+  const checkboxHandler = (index) => {
+    const newTasks = [...tasks];
+    newTasks[index].done = !tasks[index].done;
+    setTasks(newTasks)
+  }
+
   let cards = tasks.map((task, index) => {
     return(
       <Item 
-      txt = {task.txt}
-      deleteTask = {() => removedClickHandler(index)}
+      txt={task.txt}
+      deleteTask={() => removedClickHandler(index)}
       key={index}
+      done={task.done}
+      doneClicked={() => checkboxHandler(index)}
       />
     )
   })
