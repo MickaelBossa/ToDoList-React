@@ -1,6 +1,7 @@
 import {useState, useRef} from 'react';
 import './App.css';
 import Item from '../../Components/Item';
+import axios from '../../axios-firebase';
 
 function App() {
 
@@ -57,7 +58,7 @@ function App() {
         <form
         onSubmit={(e) => addTask(e)}
         >
-          <input type="text" placeholder="Que souhaitez-vous ajouter ?" ref={inputRef}/>
+          <input autoFocus type="text" placeholder="Que souhaitez-vous ajouter ?" ref={inputRef}/>
           <button type="submit">
             Ajouter
           </button>
