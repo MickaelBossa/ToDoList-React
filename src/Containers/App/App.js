@@ -16,6 +16,7 @@ useEffect(() => {
   axios.get('/tasks.json')
     .then(response => {
       const tasksArray = [];
+
       for(let key in response.data) {
         tasksArray.push({
           ...response.data[key],
@@ -73,16 +74,14 @@ useEffect(() => {
   const addTask = (e) => {
     e.preventDefault();
 
-    const newArr = [...tasks];
-    const newTodo = {};
-    newTodo.txt = e.target[0].value;
-
-    newArr.push(newTodo);
-    setTasks(newArr);
-
+    const newTask = {
+      txt: e.target[0].value,
+      done: false
+    };
+    setTasks([...tasks, newTask]);
     inputRef.current.value="";
 
-    axios.post('/tasks.json', newTodo)
+    axios.post('/tasks.json', newTask)
     .then(response => {
       console.log(response);
     })
